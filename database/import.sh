@@ -7,6 +7,9 @@ CSV_PATH="data.csv"
 # Tworzenie bazy danych
 echo "Tworzenie bazy danych $DB_NAME..."
 sudo -u postgres psql -c "CREATE DATABASE $DB_NAME;"
+sudo -u postgres psql -c "CREATE USER RYSZARD WITH ENCRYPTED PASSWORD 'KALISZ';"
+sudo -u postgres psql -c "GRANT ALL PRIVILEGES ON DATABASE $DB_NAME to RYSZARD;"
+sudo -u postgres psql -c "GRANT pg_read_all_data TO RYSZARD; GRANT pg_write_all_data TO RYSZARD;"
 
 # Tworzenie tabeli i importowanie danych
 echo "Tworzenie tabeli countries i importowanie danych..."

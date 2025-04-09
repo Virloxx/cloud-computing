@@ -1,0 +1,33 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "./generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model countries {
+  id               Int     @id @default(autoincrement())
+  country          String? @db.VarChar
+  region           String? @db.VarChar
+  population       BigInt?
+  area_sq_mi       Float?
+  pop_density      Float?
+  coastline        Float?
+  net_migration    Float?
+  infant_mortality Float?
+  gdp              Float?
+  literacy         Float?
+  phones           Float?
+  arable           Float?
+  crops            Float?
+  other            Float?
+  climate          Float?
+  birthrate        Float?
+  deathrate        Float?
+  agriculture      Float?
+  industry         Float?
+  service          Float?
+}
