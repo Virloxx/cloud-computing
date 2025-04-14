@@ -1,5 +1,5 @@
 import { NextRequest } from 'next/server';
-import { getCountries, getCountryByName } from '@/lib/queries';
+import { getCountries, getCountryByName, postNewCountry } from '@/lib/queries';
  
 export async function GET(request: NextRequest) {
   const searchParams = request.nextUrl.searchParams;
@@ -18,4 +18,17 @@ export async function GET(request: NextRequest) {
       },
     );
   }
+}
+
+export async function POST(request: NextRequest) {
+  const data = await request.json();
+
+  const added = postNewCountry(data.country);
+
+    return new Response(
+      JSON.stringify(added),
+      {
+        headers: { 'Content-Type': 'application/json' },
+      },
+    );
 }

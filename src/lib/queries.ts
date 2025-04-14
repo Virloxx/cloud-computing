@@ -20,3 +20,15 @@ export async function getCountryByName(name : string) {
 
     return countries;
 }
+
+export async function postNewCountry(name : string) {
+    const countries = await prisma.countries.create(
+        {
+            data:{
+                country: name
+            }
+        }
+    );
+
+    return countries;
+}
