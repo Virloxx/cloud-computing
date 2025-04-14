@@ -32,3 +32,17 @@ export async function postNewCountry(name : string) {
 
     return countries;
 }
+
+export async function putUpdateExistingCountry(id : number, name : string) {
+    const countries = await prisma.countries.update({
+        where: {
+            id: id,
+        },
+        data: {
+            country: name,
+        }
+    }
+    )
+
+    return countries;
+}
