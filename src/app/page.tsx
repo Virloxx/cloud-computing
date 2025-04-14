@@ -29,19 +29,19 @@ export default function Home() {
 
   // Fetch all countries on load
   useEffect(() => {
-    fetch("http://localhost:8000/objects")
+    fetch("http://localhost:3000/api/objects")
       .then((res) => res.json())
       .then((data: Country[]) => setCountries(data));
   }, []);
 
   const handleFilter = async () => {
-    const res = await fetch(`http://localhost:8000/object?country=${filter}`);
+    const res = await fetch(`http://localhost:3000/api/object?country=${filter}`);
     const data: Country[] = await res.json();
     setCountries(data);
   };
 
   const handleAdd = async () => {
-    const res = await fetch("http://localhost:8000/object", {
+    const res = await fetch("http://localhost:3000/api/object", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newCountry)
