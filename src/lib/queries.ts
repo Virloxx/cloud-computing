@@ -9,3 +9,14 @@ export async function getCountries() {
 
     return countries;
 }
+
+export async function getCountryByName(name : string) {
+    const countries = await prisma.countries.findMany({
+        where:{
+            country: name
+        }
+    }
+    );
+
+    return countries;
+}
