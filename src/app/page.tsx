@@ -78,7 +78,7 @@ export default function Home() {
       <ul className="mb-10 space-y-1">
         {countries.map((c) => (
           <li key={c.id} className="border-b py-1">
-            <strong>{c.country}</strong> ({c.region}) - Pop: {c.population.toLocaleString()}, GDP: ${c.gdp}
+            <strong>{c.country}</strong> ({c.region}) - Pop: {c.population}, GDP: ${c.gdp}
           </li>
         ))}
       </ul>
