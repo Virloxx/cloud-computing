@@ -1,5 +1,3 @@
-version: '3.8'
-
 services:
   db:
     image: postgres:15
@@ -8,8 +6,7 @@ services:
       POSTGRES_DB:   world_facts
       POSTGRES_USER: ryszard
       POSTGRES_PASSWORD: KALISZ
-    # Automatyczne seedowanie: wszystko, co znajduje się tu (.sh, .sql itd.) 
-    # zostanie wykonane przy pierwszym uruchomieniu kontenera.
+    
     volumes:
       - ./database/import.sh:/docker-entrypoint-initdb.d/import.sh:ro
       - ./database/data.csv:/docker-entrypoint-initdb.d/data.csv:ro
@@ -23,10 +20,10 @@ services:
     depends_on:
       - db
     environment:
-      # Next.js może używać DATABASE_URL lub innej zmiennej:
+      
       DATABASE_URL: "postgres://ryszard:KALISZ@db:5432/world_facts?schema=public"
       NODE_ENV:    production
     ports:
       - "3000:3000"
-    # (opcjonalnie) gdybyś chciał logi i kontrolę restartu:
+    
     restart: on-failure
